@@ -15,7 +15,8 @@ void Socket::Initialize() {
         // Initialize logger
         auto logger = spdlog::get("sockets_logger");
         if (!logger) {
-            logger = spdlog::rotating_logger_mt("sockets_logger", "../../../out/log.txt", MAX_LOG_FILE_SIZE, MAX_LOG_FILE_NUM);
+            logger = spdlog::rotating_logger_mt("sockets_logger", "log.txt", MAX_LOG_FILE_SIZE, MAX_LOG_FILE_NUM);
+            logger->set_level(spdlog::level::debug);
         }
        
         // Initialize WinSock subsystem

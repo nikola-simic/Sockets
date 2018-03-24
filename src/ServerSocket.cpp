@@ -50,7 +50,8 @@ ServerSocket::ServerSocket(AddressFamily addressFamily, SocketType socketType, P
                         _socket = NULL;
                     }
                     else {
-                        spdlog::get("sockets_logger")->error("Server socket is listening on local address");
+                        spdlog::get("sockets_logger")->info("Server socket is listening on local address");
+                        spdlog::get("sockets_logger")->flush_on(spdlog::level::debug);
                     }
                 }
             }
@@ -91,10 +92,13 @@ SOCKET_STATUS ServerSocket::stop() {
         return SOCKET_STATUS::FAILURE;
     }
     _isExiting = true;
+    closesocket(_socket);
     if (workerThread->joinable()) {
         workerThread->join();
     }
     _isExiting = false;
+    spdlog::get("sockets_logger")->info("Server successfully completed its operation");
+    spdlog::get("sockets_logger")->flush_on(spdlog::level::debug);
     return SOCKET_STATUS::SUCCESS;
 }
 
@@ -121,6 +125,7 @@ void ServerSocket::acceptConnections(ServerOperation serverOperation) {
             closesocket(c->_socket);
             if (c->_thread.joinable()) c->_thread.detach();
         });
+        spdlog::get("sockets_logger")->info("Server thread stopped");
     }
 }
 
