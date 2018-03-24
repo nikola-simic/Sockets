@@ -18,7 +18,7 @@
     <ClInclude Include="..\..\..\include\Sockets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\WinSystemHeaders.h">
+    <ClInclude Include="..\..\..\include\PCH.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -26,7 +26,7 @@
     <ClCompile Include="..\..\..\src\Sockets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\WinSystemHeaders.cpp">
+    <ClCompile Include="..\..\..\src\PCH.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

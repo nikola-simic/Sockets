@@ -78,6 +78,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\nikola.simic\Documents\Projekti\Sockets\include;$(IncludePath)</IncludePath>
+    <SourcePath>C:\Users\nikola.simic\Documents\Projekti\Sockets\src;$(SourcePath)</SourcePath>
+    <OutDir>C:\Users\nikola.simic\Documents\Projekti\Sockets\libs\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -87,6 +90,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Users\nikola.simic\Documents\Projekti\Sockets\include;$(IncludePath)</IncludePath>
+    <SourcePath>C:\Users\nikola.simic\Documents\Projekti\Sockets\src;$(SourcePath)</SourcePath>
+    <OutDir>C:\Users\nikola.simic\Documents\Projekti\Sockets\libs\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -104,16 +110,25 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>PCH.h</PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <PrecompiledHeaderOutputFile>..\..\..\pch\PCH.pch</PrecompiledHeaderOutputFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <OutputFile>..\..\..\libs\Sockets.lib</OutputFile>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -135,13 +150,19 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>PCH.h</PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <PrecompiledHeaderOutputFile>..\..\..\pch\PCH.pch</PrecompiledHeaderOutputFile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -149,14 +170,17 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <OutputFile>..\..\..\libs\Sockets.lib</OutputFile>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\Sockets.h" />
-    <ClInclude Include="..\..\..\include\WinSystemHeaders.h" />
+    <ClInclude Include="..\..\..\include\PCH.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\Sockets.cpp" />
-    <ClCompile Include="..\..\..\src\WinSystemHeaders.cpp" />
+    <ClCompile Include="..\..\..\src\PCH.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
