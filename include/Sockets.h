@@ -7,7 +7,8 @@ namespace SocketWrapper {
     using AddressFamily = uint8_t;
     using SocketType = uint8_t;
     using Protocol = uint8_t;
-    using Port = uint16_t;
+    using Address = std::string;
+    using Port = std::string;
     using QueueSize = uint16_t;
 
     enum class SOCKET_STATUS : uint8_t {

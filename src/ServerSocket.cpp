@@ -2,10 +2,11 @@
 
 using namespace SocketWrapper;
 
-ServerSocket::ServerSocket(AddressFamily addressFamily, SocketType socketType, Protocol protocol, Port port, QueueSize queueSize):
+ServerSocket::ServerSocket(AddressFamily addressFamily, SocketType socketType, Protocol protocol, Address address, Port port, QueueSize queueSize):
     _addressFamily(addressFamily),
     _socketType(socketType),
     _protocol(protocol),
+    _address(address),
     _port(port),
     _queueSize(queueSize),
     _socket(NULL),
@@ -18,9 +19,8 @@ ServerSocket::ServerSocket(AddressFamily addressFamily, SocketType socketType, P
     hints.ai_socktype = _socketType;
     hints.ai_protocol = _protocol;
     hints.ai_flags = AI_PASSIVE;
-    std::stringstream ss;
-    ss << _port;
-    int status = getaddrinfo(NULL, ss.str().c_str(), &hints, &addr);
+
+    int status = getaddrinfo(_address.c_str(), _port.c_str(), &hints, &addr);
     if (status != 0) {
         spdlog::get("sockets_logger")->error("Failed to get socket address");
     }
@@ -96,6 +96,7 @@ SOCKET_STATUS ServerSocket::stop() {
     if (workerThread->joinable()) {
         workerThread->join();
     }
+    _clients.clear();
     _isExiting = false;
     spdlog::get("sockets_logger")->info("Server successfully completed its operation");
     spdlog::get("sockets_logger")->flush_on(spdlog::level::debug);

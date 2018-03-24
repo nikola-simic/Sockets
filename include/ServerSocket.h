@@ -10,7 +10,7 @@ namespace SocketWrapper {
     class ServerSocket : public Socket {
     public:
 
-        ServerSocket(AddressFamily addressFamily, SocketType socketType, Protocol protocol, Port port, QueueSize queueSize);
+        ServerSocket(AddressFamily addressFamily, SocketType socketType, Protocol protocol, Address serverAddress, Port port, QueueSize queueSize);
         ~ServerSocket();
 
         SOCKET_STATUS start(ServerOperation serverOperation);
@@ -32,6 +32,7 @@ namespace SocketWrapper {
         AddressFamily _addressFamily;
         SocketType _socketType;
         Protocol _protocol;
+        Address _address;
         Port _port;
         QueueSize _queueSize;
         SOCKET _socket; 

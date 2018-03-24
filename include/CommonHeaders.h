@@ -13,6 +13,7 @@
 #include <thread>
 #include <vector>
 #include <algorithm>
+#include <chrono>
 
 // Dependencies headers
 #include <spdlog\spdlog.h>
