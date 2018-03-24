@@ -18,7 +18,13 @@
     <ClInclude Include="..\..\..\include\Sockets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\PCH.h">
+    <ClInclude Include="..\..\..\include\ServerSocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\CommonHeaders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\ClientSocket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -26,7 +32,10 @@
     <ClCompile Include="..\..\..\src\Sockets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\PCH.cpp">
+    <ClCompile Include="..\..\..\src\ServerSocket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ClientSocket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
